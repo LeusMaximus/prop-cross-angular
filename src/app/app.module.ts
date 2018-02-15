@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { SearchService } from './search.service';
 import { ListingsComponent } from './listings/listings.component';
+import { MainHeaderComponent } from './main-header/main-header.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ListingsComponent } from './listings/listings.component';
     AppComponent,
     SearchComponent,
     SearchResultsComponent,
-    ListingsComponent
+    ListingsComponent,
+    MainHeaderComponent
   ],
   imports: [
     BrowserModule,
