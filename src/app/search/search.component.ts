@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {SearchService} from '../search.service';
+import { SearchService } from '../search.service';
 
 @Component({
   selector: 'app-search',
@@ -20,7 +20,12 @@ export class SearchComponent implements OnInit {
 
   public search(searchTerm: string) {
     this.searchService.search(searchTerm);
-    this.router.navigate(['search-results']);
+
+    this.searchService.results
+      .subscribe(items => {
+        this.searchService.preparedResults = items;
+        this.router.navigate(['search-results']);
+      });
   }
 
 }

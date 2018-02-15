@@ -9,6 +9,8 @@ export class SearchService {
 
   public results: Observable<any[]>;
 
+  public preparedResults: any[];
+
   constructor(private http: HttpClient) { }
 
   public search(searchTerm: string): Observable<any[]> {

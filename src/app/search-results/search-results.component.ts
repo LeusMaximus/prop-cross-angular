@@ -17,10 +17,10 @@ export class SearchResultsComponent implements OnInit {
   }
 
   getListings(): void {
-    const results = this.searchService.results;
+    const preparedResults = this.searchService.preparedResults;
 
-    if (results) {
-      results.subscribe(items => this.listings = items);
+    if (preparedResults) {
+      this.listings = preparedResults;
     }
   }
 }
