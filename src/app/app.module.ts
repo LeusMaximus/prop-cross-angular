@@ -11,6 +11,7 @@ import { SearchResultsComponent } from './search-results/search-results.componen
 import { SearchService } from './search.service';
 import { ListingsComponent } from './listings/listings.component';
 import { MainHeaderComponent } from './main-header/main-header.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { MainHeaderComponent } from './main-header/main-header.component';
     SearchComponent,
     SearchResultsComponent,
     ListingsComponent,
-    MainHeaderComponent
+    MainHeaderComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,
