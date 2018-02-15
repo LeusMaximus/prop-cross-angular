@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-import { RECENT_SEARCHES } from '../mock-recent-searches';
+import { Router } from '@angular/router';
+import {SearchService} from '../search.service';
 
 @Component({
   selector: 'app-search',
@@ -8,18 +8,17 @@ import { RECENT_SEARCHES } from '../mock-recent-searches';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  currentRequest: string = '';
+  searchTerm: string;
 
-  recentSearches = RECENT_SEARCHES;
-
-  goToSearchItem(searchItem): void {
-    // TODO: Need to do
-    alert('Go to search item page');
-  }
-
-  constructor() { }
+  constructor(private router: Router, private searchServide: SearchService) { }
 
   ngOnInit() {
+    this.searchTerm = '';
+  }
+
+  public search(searchTerm: string) {
+    this.searchServide.search(searchTerm);
+    this.router.navigate(['search-results']);
   }
 
 }
