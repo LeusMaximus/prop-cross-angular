@@ -12,6 +12,7 @@ export class SearchResultsComponent implements OnInit {
   constructor(private searchService: SearchService) { }
 
   ngOnInit() {
+    this.listings = [];
     this.getListings();
   }
 

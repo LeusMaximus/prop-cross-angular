@@ -11,6 +11,9 @@ export class ListingsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    if(!this.listings) {
+      this.listings = [];
+    }
   }
 
 }

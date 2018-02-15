@@ -1,7 +1,3 @@
-<h1>
-  <span *ngIf="listings">{{ listings.length }}</span>
-  <span *ngIf="!(listings && listings.length)">0</span>
-  Results
-</h1>
+<h1><span>{{ listings.length }}</span> Results</h1>
 
 <app-listings [listings]="listings"></app-listings>
