@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FavoritesService } from '../favorites.service';
 
 @Component({
   selector: 'app-favorites',
@@ -6,12 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./favorites.component.css']
 })
 export class FavoritesComponent implements OnInit {
-  listings: any[];
+  listings: object[];
 
-  constructor() { }
+  constructor(private favoritesService: FavoritesService) { }
 
   ngOnInit() {
-    this.listings = [{price: 200}];
+    this.listings = this.getFavorites();
+    console.log(this.listings)
+  }
+
+  getFavorites(): object[] {
+    return this.favoritesService.getFavorites();
   }
 
 }

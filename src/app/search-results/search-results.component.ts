@@ -7,7 +7,7 @@ import { SearchService } from '../search.service';
   styleUrls: ['./search-results.component.css']
 })
 export class SearchResultsComponent implements OnInit {
-  listings: any[];
+  listings: object[];
 
   constructor(private searchService: SearchService) { }
 

@@ -12,6 +12,9 @@ import { SearchService } from './search.service';
 import { ListingsComponent } from './listings/listings.component';
 import { MainHeaderComponent } from './main-header/main-header.component';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { PropertyDetailComponent } from './property-detail/property-detail.component';
+import { DetailService } from './detail.service';
+import { FavoritesService } from './favorites.service';
 
 
 @NgModule({
@@ -21,7 +24,8 @@ import { FavoritesComponent } from './favorites/favorites.component';
     SearchResultsComponent,
     ListingsComponent,
     MainHeaderComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    PropertyDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
     HttpClientModule,
     HttpClientJsonpModule
   ],
-  providers: [SearchService],
+  providers: [SearchService, DetailService, FavoritesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
