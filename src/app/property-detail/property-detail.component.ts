@@ -23,8 +23,6 @@ export class PropertyDetailComponent implements OnInit {
     if (detail) {
       this.currentDetail = detail;
     }
-
-    console.log(this.currentDetail);
   }
 
   addToFavorites(favoriteItem: object): void {

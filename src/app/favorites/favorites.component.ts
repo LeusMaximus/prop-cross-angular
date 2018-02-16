@@ -13,7 +13,6 @@ export class FavoritesComponent implements OnInit {
 
   ngOnInit() {
     this.listings = this.getFavorites();
-    console.log(this.listings)
   }
 
   getFavorites(): object[] {
