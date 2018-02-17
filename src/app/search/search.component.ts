@@ -18,12 +18,15 @@ export class SearchComponent implements OnInit {
     this.searchTerm = '';
   }
 
-  public search(searchTerm: string) {
+  public search(searchTerm: string): void {
+    if (!searchTerm) {
+      return;
+    }
+
     this.searchService.search(searchTerm);
 
-    this.searchService.results
-      .subscribe(items => {
-        this.searchService.preparedResults = items;
+    this.searchService.results$
+      .subscribe(() => {
         this.router.navigate(['search-results']);
       });
   }

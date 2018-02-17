@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
+import { Item } from './classes/item';
 
 @Injectable()
 export class DetailService {
-  currentDetail: object;
+  currentDetail: Item;
 
   constructor() { }
 
-  public getCurrentDetail(): object {
+  public getCurrentDetail(): Item {
     return this.currentDetail;
   }
 
-  public setCurrentDetail(detail: object): void {
+  public setCurrentDetail(detail: Item): void {
     this.currentDetail = detail;
   }
 }

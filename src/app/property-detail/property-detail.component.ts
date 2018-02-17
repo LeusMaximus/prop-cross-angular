@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DetailService } from '../detail.service';
 import { FavoritesService } from '../favorites.service';
+import { Item } from '../classes/item';
 
 @Component({
   selector: 'app-property-detail',
@@ -8,12 +9,11 @@ import { FavoritesService } from '../favorites.service';
   styleUrls: ['./property-detail.component.css']
 })
 export class PropertyDetailComponent implements OnInit {
-  currentDetail: object;
+  currentDetail: Item;
 
   constructor(private detailService: DetailService, private favoritesService: FavoritesService) { }
 
   ngOnInit() {
-    this.currentDetail = {};
     this.getCurrentDetail();
   }
 
@@ -25,7 +25,7 @@ export class PropertyDetailComponent implements OnInit {
     }
   }
 
-  addToFavorites(favoriteItem: object): void {
+  addToFavorites(favoriteItem: Item): void {
     this.favoritesService.addToFavorites(favoriteItem);
   }
 }

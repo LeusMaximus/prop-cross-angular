@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../search.service';
+import {Observable} from 'rxjs/Observable';
+import {Item} from '../classes/item';
 
 @Component({
   selector: 'app-search-results',
@@ -7,20 +9,11 @@ import { SearchService } from '../search.service';
   styleUrls: ['./search-results.component.css']
 })
 export class SearchResultsComponent implements OnInit {
-  listings: object[];
+  results$: Observable<Item[]>;
 
   constructor(private searchService: SearchService) { }
 
   ngOnInit() {
-    this.listings = [];
-    this.getListings();
-  }
-
-  getListings(): void {
-    const preparedResults = this.searchService.preparedResults;
-
-    if (preparedResults) {
-      this.listings = preparedResults;
-    }
+    this.results$ = this.searchService.results$;
   }
 }

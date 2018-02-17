@@ -1,15 +1,16 @@
 <section *ngIf="listings.length">
   <article *ngFor="let item of listings" (click)="setCurrentDetail(item)">
-      <div *ngIf="item.thumb_url">
-        <img src="{{ item.thumb_url }}">
-      </div>
+    id: {{item.id}}
+    <div *ngIf="item.thumbUrl">
+      <img src="{{ item.thumbUrl }}">
+    </div>
 
-      <strong *ngIf="item.price">{{ item.price | currency: item.price_currency }}</strong>
+    <strong *ngIf="item.price">{{ item.price | currency: item.currencySymbol }}</strong>
 
-      <h2 *ngIf="item.title">{{ item.title }}</h2>
+    <h2 *ngIf="item.location">{{ item.location }}</h2>
 
-      <div *ngIf="item.summary">
-        <p>{{ item.summary }}</p>
-      </div>
+    <div *ngIf="item.summary">
+      <p>{{ item.summary }}</p>
+    </div>
   </article>
 </section>

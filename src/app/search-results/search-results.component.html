@@ -1,6 +1,6 @@
 <header>
-  <h1><span>{{ listings.length }}</span> Results</h1>
+  <h1>Results</h1>
   <a routerLink="/">Home</a>
 </header>
 
-<app-listings [listings]="listings"></app-listings>
+<app-listings [listings]="results$ | async"></app-listings>

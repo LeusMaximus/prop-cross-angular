@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DetailService } from '../detail.service';
 import { Router } from '@angular/router';
+import { Item } from '../classes/item';
 
 @Component({
   selector: 'app-listings',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./listings.component.css']
 })
 export class ListingsComponent implements OnInit {
-  @Input() listings: any[];
+  @Input() listings: Item[];
 
   constructor(private router: Router, private detailService: DetailService) { }
 
@@ -18,7 +19,7 @@ export class ListingsComponent implements OnInit {
     }
   }
 
-  setCurrentDetail(detail: object): void {
+  setCurrentDetail(detail: Item): void {
     this.detailService.setCurrentDetail(detail);
     this.router.navigate(['detail']);
   }
