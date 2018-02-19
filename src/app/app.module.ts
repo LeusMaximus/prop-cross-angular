@@ -13,7 +13,7 @@ import { ListingsComponent } from './listings/listings.component';
 import { MainHeaderComponent } from './main-header/main-header.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { PropertyDetailComponent } from './property-detail/property-detail.component';
-import { FavoritesService } from './favorites.service';
+import { LocalStorageService } from './localstorage.service';
 
 
 @NgModule({
@@ -33,7 +33,7 @@ import { FavoritesService } from './favorites.service';
     HttpClientModule,
     HttpClientJsonpModule
   ],
-  providers: [PropertyService, FavoritesService],
+  providers: [PropertyService, LocalStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

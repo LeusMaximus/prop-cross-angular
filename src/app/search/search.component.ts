@@ -9,7 +9,6 @@ import { PropertyService } from '../property.service';
 })
 export class SearchComponent implements OnInit {
   pageTitle: string;
-  searchTerm: string;
 
   constructor(
     private router: Router,
@@ -18,7 +17,6 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.pageTitle = 'PropertyCross Angular';
-    this.searchTerm = '';
   }
 
   public search(searchTerm: string): void {

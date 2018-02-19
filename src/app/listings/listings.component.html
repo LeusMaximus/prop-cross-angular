@@ -1,5 +1,5 @@
 <section *ngIf="listings.length">
-  <article *ngFor="let item of listings" (click)="setCurrentDetail(item)">
+  <article *ngFor="let item of listings">
     <a routerLink="/{{sourcePageName}}/detail/{{item.id}}">
       <div *ngIf="item.thumbUrl">
         <img src="{{ item.thumbUrl }}">

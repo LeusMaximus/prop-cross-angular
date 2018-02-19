@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FavoritesService } from '../favorites.service';
-import { Item } from '../classes/item';
 import { ActivatedRoute } from '@angular/router';
+
+import { Item } from '../classes/item';
 import { PropertyService } from '../property.service';
 
 @Component({
@@ -15,7 +15,6 @@ export class PropertyDetailComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private propertyService: PropertyService,
-    private favoritesService: FavoritesService
   ) { }
 
   ngOnInit() {
@@ -34,9 +33,14 @@ export class PropertyDetailComponent implements OnInit {
           this.currentDetail = properties.find(property => property.id === id);
         });
     }
+
+    if (sourcePage === 'favorites') {
+      this.currentDetail = this.propertyService.getFavorites()
+        .find(property => property.id === id);
+    }
   }
 
   addToFavorites(favoriteItem: Item): void {
-    this.favoritesService.addToFavorites(favoriteItem);
+    this.propertyService.addToFavorites(favoriteItem);
   }
 }

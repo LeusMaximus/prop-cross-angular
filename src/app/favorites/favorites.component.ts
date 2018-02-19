@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FavoritesService } from '../favorites.service';
+import { PropertyService } from '../property.service';
+import { Item } from '../classes/item';
 
 @Component({
   selector: 'app-favorites',
@@ -7,16 +8,19 @@ import { FavoritesService } from '../favorites.service';
   styleUrls: ['./favorites.component.css']
 })
 export class FavoritesComponent implements OnInit {
-  listings: object[];
+  listings: Item[];
+  pageName: string;
 
-  constructor(private favoritesService: FavoritesService) { }
+  constructor(private propertyService: PropertyService) {
+    this.pageName = 'favorites';
+  }
 
   ngOnInit() {
     this.listings = this.getFavorites();
   }
 
-  getFavorites(): object[] {
-    return this.favoritesService.getFavorites();
+  getFavorites(): Item[] {
+    return this.propertyService.getFavorites();
   }
 
 }
