@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DetailService } from '../detail.service';
 import { FavoritesService } from '../favorites.service';
 import { Item } from '../classes/item';
+import { ActivatedRoute } from '@angular/router';
+import { PropertyService } from '../property.service';
 
 @Component({
   selector: 'app-property-detail',
@@ -11,17 +12,27 @@ import { Item } from '../classes/item';
 export class PropertyDetailComponent implements OnInit {
   currentDetail: Item;
 
-  constructor(private detailService: DetailService, private favoritesService: FavoritesService) { }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private propertyService: PropertyService,
+    private favoritesService: FavoritesService
+  ) { }
 
   ngOnInit() {
-    this.getCurrentDetail();
+    this.setCurrentDetail();
   }
 
-  getCurrentDetail(): void {
-    const detail = this.detailService.getCurrentDetail();
+  setCurrentDetail(): void {
+    const params = this.activatedRoute.snapshot.params;
+    const id = params.id;
+    const sourcePage = params.sourcePage;
+    const results$ = this.propertyService.results$;
 
-    if (detail) {
-      this.currentDetail = detail;
+    if (sourcePage === 'search-results' && results$) {
+      results$
+        .subscribe(properties => {
+          this.currentDetail = properties.find(property => property.id === id);
+        });
     }
   }
 

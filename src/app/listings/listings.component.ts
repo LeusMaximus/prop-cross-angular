@@ -1,6 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DetailService } from '../detail.service';
-import { Router } from '@angular/router';
 import { Item } from '../classes/item';
 
 @Component({
@@ -10,18 +8,13 @@ import { Item } from '../classes/item';
 })
 export class ListingsComponent implements OnInit {
   @Input() listings: Item[];
+  @Input() sourcePageName: string;
 
-  constructor(private router: Router, private detailService: DetailService) { }
+  constructor() { }
 
   ngOnInit() {
     if (!this.listings) {
       this.listings = [];
     }
   }
-
-  setCurrentDetail(detail: Item): void {
-    this.detailService.setCurrentDetail(detail);
-    this.router.navigate(['detail']);
-  }
-
 }

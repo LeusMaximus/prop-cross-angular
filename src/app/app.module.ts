@@ -8,12 +8,11 @@ import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SearchResultsComponent } from './search-results/search-results.component';
-import { SearchService } from './search.service';
+import { PropertyService } from './property.service';
 import { ListingsComponent } from './listings/listings.component';
 import { MainHeaderComponent } from './main-header/main-header.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { PropertyDetailComponent } from './property-detail/property-detail.component';
-import { DetailService } from './detail.service';
 import { FavoritesService } from './favorites.service';
 
 
@@ -34,7 +33,7 @@ import { FavoritesService } from './favorites.service';
     HttpClientModule,
     HttpClientJsonpModule
   ],
-  providers: [SearchService, DetailService, FavoritesService],
+  providers: [PropertyService, FavoritesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

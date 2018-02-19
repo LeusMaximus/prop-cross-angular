@@ -6,11 +6,11 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { PropertyDetailComponent } from './property-detail/property-detail.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/search', pathMatch: 'full' },
-  { path: 'search', component: SearchComponent },
+  // { path: '', redirectTo: '/search', pathMatch: 'full' },
+  { path: '', component: SearchComponent },
   { path: 'search-results', component: SearchResultsComponent },
   { path: 'favorites', component: FavoritesComponent },
-  { path: 'detail', component: PropertyDetailComponent }
+  { path: ':sourcePage/detail/:id', component: PropertyDetailComponent }
 ]
 
 @NgModule({

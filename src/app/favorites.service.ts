@@ -20,3 +20,6 @@ export class FavoritesService {
   }
 
 }
+
+// TODO: add try catch for localstorage
+// TODO: create general localstorage service

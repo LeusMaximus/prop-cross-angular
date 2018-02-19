@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SearchService } from '../search.service';
+import { PropertyService } from '../property.service';
 
 @Component({
   selector: 'app-search',
@@ -11,7 +11,10 @@ export class SearchComponent implements OnInit {
   pageTitle: string;
   searchTerm: string;
 
-  constructor(private router: Router, private searchService: SearchService) { }
+  constructor(
+    private router: Router,
+    private propertyService: PropertyService
+  ) { }
 
   ngOnInit() {
     this.pageTitle = 'PropertyCross Angular';
@@ -23,9 +26,9 @@ export class SearchComponent implements OnInit {
       return;
     }
 
-    this.searchService.search(searchTerm);
+    this.propertyService.search(searchTerm);
 
-    this.searchService.results$
+    this.propertyService.results$
       .subscribe(() => {
         this.router.navigate(['search-results']);
       });

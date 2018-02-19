@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SearchService } from '../search.service';
-import {Observable} from 'rxjs/Observable';
-import {Item} from '../classes/item';
+import { PropertyService } from '../property.service';
+import { Observable } from 'rxjs/Observable';
+import { Item } from '../classes/item';
 
 @Component({
   selector: 'app-search-results',
@@ -10,10 +10,13 @@ import {Item} from '../classes/item';
 })
 export class SearchResultsComponent implements OnInit {
   results$: Observable<Item[]>;
+  pageName: string;
 
-  constructor(private searchService: SearchService) { }
+  constructor(private propertyService: PropertyService) {
+    this.pageName = 'search-results';
+  }
 
   ngOnInit() {
-    this.results$ = this.searchService.results$;
+    this.results$ = this.propertyService.results$;
   }
 }
