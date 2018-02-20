@@ -17,6 +17,6 @@ export class SearchResultsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.results$ = this.propertyService.results$;
+    this.results$ = this.propertyService.searchResults$;
   }
 }

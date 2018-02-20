@@ -1,0 +1,9 @@
+<div *ngIf="recentSearchesList && recentSearchesList.length">
+  <h2>Recent searches</h2>
+
+  <ul>
+    <li *ngFor="let item of recentSearchesList" (click)="search(item.name)">
+      {{ item.name }} ({{ item.count }})
+    </li>
+  </ul>
+</div>

@@ -25,7 +25,7 @@ export class PropertyDetailComponent implements OnInit {
     const params = this.activatedRoute.snapshot.params;
     const id = params.id;
     const sourcePage = params.sourcePage;
-    const results$ = this.propertyService.results$;
+    const results$ = this.propertyService.searchResults$;
 
     if (sourcePage === 'search-results' && results$) {
       results$

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PropertyService } from '../property.service';
+import { RecentSearchesService } from '../recent-searches.service';
+import { RecentSearch } from '../classes/recentSearch';
 
 @Component({
   selector: 'app-search',
@@ -9,10 +11,12 @@ import { PropertyService } from '../property.service';
 })
 export class SearchComponent implements OnInit {
   pageTitle: string;
+  searchTerm: string;
 
   constructor(
     private router: Router,
-    private propertyService: PropertyService
+    private propertyService: PropertyService,
+    private recentSearchesService: RecentSearchesService
   ) { }
 
   ngOnInit() {
@@ -26,10 +30,19 @@ export class SearchComponent implements OnInit {
 
     this.propertyService.search(searchTerm);
 
-    this.propertyService.results$
+    this.propertyService.searchResults$
       .subscribe(() => {
         this.router.navigate(['search-results']);
       });
+
+    this.propertyService.searchCount$
+      .subscribe(number => {
+        this.recentSearchesService.addToRecentSearches(new RecentSearch({name: searchTerm, count: number}));
+      });
+  }
+
+  public onRepeatSearch(term: string): void {
+    this.search(term);
   }
 
 }

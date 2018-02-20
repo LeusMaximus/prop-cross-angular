@@ -14,6 +14,8 @@ import { MainHeaderComponent } from './main-header/main-header.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { PropertyDetailComponent } from './property-detail/property-detail.component';
 import { LocalStorageService } from './localstorage.service';
+import { RecentSearchesService } from './recent-searches.service';
+import { RecentSearchesComponent } from './recent-searches/recent-searches.component';
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import { LocalStorageService } from './localstorage.service';
     ListingsComponent,
     MainHeaderComponent,
     FavoritesComponent,
-    PropertyDetailComponent
+    PropertyDetailComponent,
+    RecentSearchesComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,7 @@ import { LocalStorageService } from './localstorage.service';
     HttpClientModule,
     HttpClientJsonpModule
   ],
-  providers: [PropertyService, LocalStorageService],
+  providers: [PropertyService, LocalStorageService, RecentSearchesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

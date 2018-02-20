@@ -10,15 +10,19 @@ export class PropertyService {
   private searchUrl = 'https://api.nestoria.co.uk/api?action=search_listings&encoding=json&place_name=';
   private favoritesKey = 'favorites';
 
-  public results$: Observable<Item[]>;
+  public searchResponse$: Observable<object>;
+  public searchResults$: Observable<Item[]>;
+  public searchCount$: Observable<number>;
 
   constructor(
     private http: HttpClient,
     private localStorageService: LocalStorageService
   ) { }
 
-  public search(searchTerm: string): Observable<Item[]> {
-    this.results$ = this.http.jsonp(this.searchUrl + searchTerm, 'callback')
+  public search(searchTerm: string): void {
+    this.searchResponse$ = this.http.jsonp(this.searchUrl + searchTerm, 'callback');
+
+    this.searchResults$ = this.searchResponse$
       .pipe(
         pluck('response', 'listings'),
         map<any[], any>(results => {
@@ -26,17 +30,18 @@ export class PropertyService {
         })
       );
 
-    return this.results$;
+    this.searchCount$ = this.searchResponse$
+      .pipe(
+        pluck('response', 'total_results')
+      );
   }
 
   public getFavorites(): Item[] {
-    const favorites = this.localStorageService.getItem(this.favoritesKey);
-
-    return favorites ? favorites : [];
+    return this.localStorageService.getItem(this.favoritesKey) || [];
   }
 
   public addToFavorites(favoriteItem: Item): void {
-    const favorites = this.getFavorites();
+    const favorites: Item[] = this.getFavorites();
 
     favorites.push(favoriteItem);
 
