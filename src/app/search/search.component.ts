@@ -10,8 +10,9 @@ import { RecentSearch } from '../classes/recentSearch';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  pageTitle: string;
-  searchTerm: string;
+  public pageTitle: string;
+  public searchTerm: string;
+  public loading = false;
 
   constructor(
     private router: Router,
@@ -28,6 +29,8 @@ export class SearchComponent implements OnInit {
       return;
     }
 
+    this.loading = true;
+
     this.propertyService.search(searchTerm);
 
     this.propertyService.searchResults$
@@ -37,6 +40,7 @@ export class SearchComponent implements OnInit {
 
     this.propertyService.searchCount$
       .subscribe(number => {
+        this.loading = false;
         this.recentSearchesService.addToRecentSearches(new RecentSearch({name: searchTerm, count: number}));
       });
   }

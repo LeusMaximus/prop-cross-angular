@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
+import { LoadingModule } from 'ngx-loading';
 
 
 import { AppComponent } from './app.component';
@@ -34,7 +35,8 @@ import { RecentSearchesComponent } from './recent-searches/recent-searches.compo
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpClientJsonpModule
+    HttpClientJsonpModule,
+    LoadingModule
   ],
   providers: [PropertyService, LocalStorageService, RecentSearchesService],
   bootstrap: [AppComponent]
