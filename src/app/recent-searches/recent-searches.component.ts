@@ -22,7 +22,8 @@ export class RecentSearchesComponent implements OnInit {
     return this.recentSearchesService.getRecentSearches();
   }
 
-  public search(term: string) {
+  public search(event, term: string) {
+    event.preventDefault();
     this.onRepeatSearch.emit(term);
   }
 

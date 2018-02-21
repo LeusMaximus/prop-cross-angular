@@ -35,12 +35,12 @@ export class SearchComponent implements OnInit {
 
     this.propertyService.searchResults$
       .subscribe(() => {
+        this.loading = false;
         this.router.navigate(['search-results']);
       });
 
     this.propertyService.searchCount$
       .subscribe(number => {
-        this.loading = false;
         this.recentSearchesService.addToRecentSearches(new RecentSearch({name: searchTerm, count: number}));
       });
   }

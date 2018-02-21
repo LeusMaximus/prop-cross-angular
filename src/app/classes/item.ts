@@ -8,6 +8,7 @@ export class Item {
   bathroomNumber: number;
   bedroomNumber: number;
   summary: string;
+  isInFavorites: boolean;
 
   constructor(source: any) {
     this.id = this.getId(source.img_url);
@@ -18,6 +19,7 @@ export class Item {
     this.bathroomNumber = source.bathroom_number;
     this.bedroomNumber = source.bedroom_number;
     this.summary = source.summary;
+    this.isInFavorites = false;
 
     // truncated to the first two title components
     this.location = source.title.split(', ').slice(0, 2).join(', ');
@@ -26,6 +28,4 @@ export class Item {
   getId(url: string): string {
     return url.match(/\d{10,}/)[0];
   }
-
-
 }

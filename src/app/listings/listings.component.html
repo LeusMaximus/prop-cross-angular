@@ -7,11 +7,16 @@
 
       <strong *ngIf="item.price">{{ item.price | currency: item.currencySymbol }}</strong>
 
-      <h2 *ngIf="item.location">{{ item.location }}</h2>
+      <h2 *ngIf="item.location">
+        {{ item.location }}
+        <span *ngIf="item.isInFavorites" style="color: red;">&hearts;</span>
+      </h2>
 
       <div *ngIf="item.summary">
         <p>{{ item.summary }}</p>
       </div>
     </a>
+
+    <hr>
   </article>
 </section>

@@ -10,7 +10,7 @@ import { PropertyService } from '../property.service';
   styleUrls: ['./property-detail.component.css']
 })
 export class PropertyDetailComponent implements OnInit {
-  currentDetail: Item;
+  currentProperty: Item;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -18,29 +18,32 @@ export class PropertyDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.setCurrentDetail();
+    this.setCurrentProperty();
   }
 
-  setCurrentDetail(): void {
+  setCurrentProperty(): void {
     const params = this.activatedRoute.snapshot.params;
-    const id = params.id;
-    const sourcePage = params.sourcePage;
+    const { id, sourcePage } = params;
     const results$ = this.propertyService.searchResults$;
 
     if (sourcePage === 'search-results' && results$) {
       results$
         .subscribe(properties => {
-          this.currentDetail = properties.find(property => property.id === id);
+          this.currentProperty = properties.find(property => property.id === id);
         });
     }
 
     if (sourcePage === 'favorites') {
-      this.currentDetail = this.propertyService.getFavorites()
+      this.currentProperty = this.propertyService.getFavorites()
         .find(property => property.id === id);
     }
   }
 
   addToFavorites(favoriteItem: Item): void {
     this.propertyService.addToFavorites(favoriteItem);
+  }
+
+  removeFromFavorites(favoriteItem: Item): void {
+    this.propertyService.removeFromFavorites(favoriteItem);
   }
 }

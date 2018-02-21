@@ -2,8 +2,9 @@
   <h2>Recent searches</h2>
 
   <ul>
-    <li *ngFor="let item of recentSearchesList" (click)="search(item.name)">
-      {{ item.name }} ({{ item.count }})
+    <li *ngFor="let item of recentSearchesList">
+      <button type="button" (click)="search($event, item.name)">{{ item.name }} ({{ item.count }})</button>
+      <br><br>
     </li>
   </ul>
 </div>

@@ -1,9 +1,24 @@
 <header>
   <h1>Property details</h1>
   <a routerLink="/">Home</a>
-  <button (click)="addToFavorites(currentDetail)">Add to favorites</button>
+
+  <button
+    *ngIf="currentProperty && !currentProperty.isInFavorites"
+    (click)="addToFavorites(currentProperty)"
+  >
+    Add to favorites
+  </button>
+
+  <button
+    *ngIf="currentProperty && currentProperty.isInFavorites"
+    (click)="removeFromFavorites(currentProperty)"
+  >
+    Remove from favorites
+  </button>
 </header>
 
-<div *ngIf="currentDetail">
-  <img src="{{ currentDetail.imgUrl }}">
+<hr>
+
+<div *ngIf="currentProperty">
+  <img src="{{ currentProperty.imgUrl }}">
 </div>
